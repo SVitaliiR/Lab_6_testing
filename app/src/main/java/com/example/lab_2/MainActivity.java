@@ -45,7 +45,4 @@ public class MainActivity extends AppCompatActivity {
         } else if(this.spinner.getSelectedItem().toString().equalsIgnoreCase("Chars")) {
         }
     }
-    }
-
-
 }
