@@ -34,15 +34,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void BtnCountClick(View view) {
         String SelectionChars = getResources().getString(R.string.Selection_Chars);
-        if(this.spinner.getSelectedItem().toString().equalsIgnoreCase("Chars"));
+        if(this.spinner.getSelectedItem().toString().equalsIgnoreCase("Words")) {
+            String UI = this.TextEditorUI.getText().toString();
+            Log.i("UserText", UI);
 
+            int count = TextCounter.getWordCount(UI);
+            Log.i("UserTextCount", String.valueOf(count));
 
-        String UI = this.TextEditorUI.getText().toString();
-        Log.i("UserText", UI);
-
-        int count = TextCounter.getChartsCount(UI);
-        Log.i("UserTextCount", String.valueOf(count));
-
-        this.TVResult.setText(String.valueOf(count));
+            this.TVResult.setText(String.valueOf(count));
+        } else if(this.spinner.getSelectedItem().toString().equalsIgnoreCase("Chars")) {
+        }
     }
+    }
+
+
 }
