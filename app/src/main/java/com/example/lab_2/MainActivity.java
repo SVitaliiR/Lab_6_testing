@@ -10,22 +10,24 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner ItemsToCount;
-    private EditText TextEditorUI;
-    private TextView TVResult;
+    private Spinner itemsToCount;
+    private EditText textEditorUI;
+    private TextView tVResult;
     private Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.TextEditorUI = findViewById(R.id.TextEditorUI);
-        this.TVResult = findViewById(R.id.TVResult);
+        this.textEditorUI = findViewById(R.id.textEditorUI);
+        this.tVResult = findViewById(R.id.tVResult);
 
-        this.spinner = (Spinner) findViewById(R.id.ItemsToCount);
+        this.spinner = (Spinner) findViewById(R.id.itemsToCount);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource( this,
                 R.array.CountOptions, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -34,15 +36,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void BtnCountClick(View view) {
         String SelectionChars = getResources().getString(R.string.Selection_Chars);
-        if(this.spinner.getSelectedItem().toString().equalsIgnoreCase("Words")) {
-            String UI = this.TextEditorUI.getText().toString();
+        String UI = this.textEditorUI.getText().toString();
+
+        if(this.spinner.getSelectedItem().toString().equalsIgnoreCase(getResources().getString(R.string.Selection_Words))) {
+            int wordCount = TextCounter.getWordCount(UI);
+            tVResult.setText(String.valueOf(wordCount));
+
+
+        } else {
             Log.i("UserText", UI);
 
-            int count = TextCounter.getWordCount(UI);
+            int count = CharsCounter.getChartsCount(UI);
             Log.i("UserTextCount", String.valueOf(count));
 
-            this.TVResult.setText(String.valueOf(count));
-        } else if(this.spinner.getSelectedItem().toString().equalsIgnoreCase("Chars")) {
+            this.tVResult.setText(String.valueOf(count));
         }
     }
+
 }

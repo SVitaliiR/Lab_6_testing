@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Lab_2</string>
     <string name="Selection_Chars">Chars</string>
+    <string name="Selection_Words">Words</string>
     <string-array name="CountOptions">
         <item>Words</item>
         <item>Chars</item>
