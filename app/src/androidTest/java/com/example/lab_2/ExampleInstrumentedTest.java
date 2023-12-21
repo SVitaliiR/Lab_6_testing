@@ -47,7 +47,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testCharCount() {
-        // Input text
         Espresso.onView(withId(R.id.textEditorUI))
                 .perform(ViewActions.typeText("Hello World"));
 
@@ -55,34 +54,28 @@ public class ExampleInstrumentedTest {
                 .perform(ViewActions.click());
         Espresso.onData(allOf(is(instanceOf(String.class)), is("Chars"))).perform(ViewActions.click());
 
-        // Click on count button
         Espresso.onView(withId(R.id.countWordButton))
                 .perform(ViewActions.click());
 
         Espresso.onView(withId(R.id.textEditorUI))
                         .check(matches(withText("Hello World")));
 
-        // Check result
         Espresso.onView(withId(R.id.tVResult))
                 .check(matches(withText("11")));
     }
 
     @Test
     public void testWordCount() {
-        // Input text
         Espresso.onView(withId(R.id.textEditorUI))
                 .perform(ViewActions.typeText("Hello World"));
 
-        // Select "Words" from spinner
         Espresso.onView(withId(R.id.itemsToCount))
                 .perform(ViewActions.click());
         Espresso.onData(allOf(is(instanceOf(String.class)), is("Words"))).perform(ViewActions.click());
 
-        // Click on count button
         Espresso.onView(withId(R.id.countWordButton))
                 .perform(ViewActions.click());
 
-        // Check result
         Espresso.onView(withId(R.id.tVResult))
                 .check(matches(withText("2")));
     }
